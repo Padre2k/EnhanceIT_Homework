@@ -12,7 +12,8 @@ func twoStrings(word1 s1: String, word2 s2: String) -> Bool {
   //  let name = "King"
     let arr = s1.map { String($0) }
 
-    
+    let myString = s1.enumerated()
+    print("MyString: \(myString)")
    
     print(arr)
    
