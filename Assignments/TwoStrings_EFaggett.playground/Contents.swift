@@ -1,63 +1,37 @@
 import UIKit
 
-//var greeting = "Hello, playground"
-
-
 func twoStrings(word1 s1: String, word2 s2: String) -> Bool {
     
     var matches = 0
     var letters = ""
     var letterIndex = 0
-//    let check1 = explode(s1)
-  //  let name = "King"
+    var isMatch = false
+    var verify = false
+    
+    
     let arr = s1.map { String($0) }
 
-    let myString = s1.enumerated()
-    print("MyString: \(myString)")
-   
-    print(arr)
-   
+    print("Array: \(arr)")
+    letters = ""
     for char in arr {
-
-        letterIndex += 1
         
-        letters = char
-//        if (s2.contains(char)) {
-//             matches += 1
-//        }
-//        print(matches)
+        verify = s2.localizedCaseInsensitiveContains(char)  //checkin s1 to s2
         
-        
-        var extCheck = checkValue(s1: char, s2: s2)
-        
-        if extCheck {
-//            letterIndex += 1
-            letters = letters + arr[letterIndex]
-            print(letters)
-            extCheck = checkValue(s1: letters, s2: s2)
+        if s2.contains(char) {    //checkin s1 to s2 - not perfect though
+            letters.append(char)
+            matches += 1
         }
-        
-        
+    }
+    print("Letters: \(letters)")
+    print("Verify: \(verify)")
+    
+    
+    if letters.count > 1 {
+        isMatch = true
     }
     
-//   for
-    
-    
-    
-    
- 
-    return false
+    return isMatch
 }
 
-
-func checkValue(s1: String, s2: String) -> Bool{
-var check: Bool = false
-    
-    if (s2.contains(s1)) {
-        check = true
-    }
-    return check
-}
-
-
-twoStrings(word1: "Apple_Next", word2: "Apple")
+let check = twoStrings(word1: "balloon flies high", word2: "My balloon is the best!")
+print(check)
